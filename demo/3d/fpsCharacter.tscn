@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3tecvd00k2ug"]
+
+[ext_resource type="Script" path="res://demo/3d/fpsCharacter.gd" id="1_fl7bt"]
+[ext_resource type="Script" path="res://demo/3d/fpsCamera.gd" id="2_i5vo4"]
+[ext_resource type="ArrayMesh" uid="uid://3yihcuy12wf7" path="res://addons/vector_helper/vector3d/vector.obj" id="3_6yp6r"]
+[ext_resource type="Script" path="res://addons/vector_helper/vector3d/vector3d.gd" id="4_wvnms"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e5eyo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhce0"]
+albedo_color = Color(0.764706, 0.431373, 0.14902, 1)
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_fl7bt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_e5eyo")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58372, 0)
+script = ExtResource("2_i5vo4")
+
+[node name="Vector3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, -0.618799)
+cast_shadow = 0
+mesh = ExtResource("3_6yp6r")
+surface_material_override/0 = SubResource("StandardMaterial3D_uhce0")
+script = ExtResource("4_wvnms")
